@@ -5,14 +5,15 @@ import { Picker, PickerProps } from "@react-native-picker/picker";
 
 interface Props extends Omit<PickerProps, 'onValueChange'> {
   opcion: string;
+  motivoHome: any;
   //styles: any;
 }
 
-export default function CustomPicker({ opcion }: Props) {
-  const [motivo, setMotivo] = React.useState('');
+export default function CustomPicker({ opcion, motivoHome }: Props) {
+  const [motivo, setMotivo] = React.useState(motivoHome);
   //const MotivoContext = React.createContext(motivo);
   //<MotivoContext.Provider value={4}></MotivoContext.Provider>
-
+  
   const opcionesA = [
     {
       label: "A1",
@@ -59,7 +60,7 @@ export default function CustomPicker({ opcion }: Props) {
         return (
               <Picker
                 selectedValue={motivo}
-                onValueChange={(value, index) => setMotivo(value)}
+                onValueChange={(value, index) => motivoHome(value)}
                 mode="dropdown" // Android only
                 style={styles.picker}
               >
@@ -72,7 +73,7 @@ export default function CustomPicker({ opcion }: Props) {
         return (
               <Picker
                 selectedValue={motivo}
-                onValueChange={(value, index) => setMotivo(value)}
+                onValueChange={(value, index) => motivoHome(value)}
                 mode="dropdown" // Android only
                 style={styles.picker}
               >
@@ -85,7 +86,7 @@ export default function CustomPicker({ opcion }: Props) {
         return (
               <Picker
                 selectedValue={motivo}
-                onValueChange={(value, index) => setMotivo(value)}
+                onValueChange={(value, index) => motivoHome(value)}
                 mode="dropdown" // Android only
                 style={styles.picker}
               >
