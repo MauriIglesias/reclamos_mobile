@@ -18,19 +18,18 @@ export default function enviarDatos(email: string, razon: string, motivo: string
         motivo: motivo,
         descripcion: descripcion
     })*/
-    if(email==="" || razon==="Unknown" || descripcion==="") {
+    if(email==="" || razon==="Unknown" || motivo==="Unknown" || descripcion==="") {
         return (
             Alert.alert(
-                "Datos no enviados",
-                `Debe ingresar todos los datos ${email} ${razon} ${motivo} ${descripcion}`,
+                "Reclamo no enviado",
+                `Debe ingresar todos los datos`,
                 [
                   { text: "OK", style: "default", onPress: () => console.log("OK Pressed") }
                 ]
             )
         );
     } else {
-            //console.log(`${datos.email} ${datos.razon} ${datos.motivo} ${datos.descripcion}`);
-            axios.post('http://localhost:8080/api/v1/correo/enviar', {
+            axios.post('http://localhost:3000/api/v1/correo/enviar', {
                 email: email,
                 razon: razon,
                 motivo: motivo,
@@ -38,8 +37,8 @@ export default function enviarDatos(email: string, razon: string, motivo: string
             }).then(res => {
             return (
                 Alert.alert(
-                    "Datos enviados",
-                    "Se envio el reclamo",
+                    "Reclamo enviado",
+                    `Email: ${email} \nRazon: ${razon} \nMotivo: ${motivo} \nDescripcion: ${descripcion}`,
                     [
                       { text: "OK", style: "default", onPress: () => console.log("OK Pressed") }
                     ]
@@ -48,8 +47,8 @@ export default function enviarDatos(email: string, razon: string, motivo: string
             }).catch(err => {
                 return (
                     Alert.alert(
-                        "Datos no enviados",
-                        "Hubo un error de comunicacion",
+                        "Reclamo no enviado",
+                        "Error de comunicacion",
                         [
                           { text: "OK", style: "default", onPress: () => console.log("OK Pressed") }
                         ]

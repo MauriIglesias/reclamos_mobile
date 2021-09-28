@@ -15,7 +15,7 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Text>Formulario de reclamos</Text>
+      <Text style={styles.title}>Formulario de reclamos</Text>
 
       <TextInput
         style={styles.textInput}
